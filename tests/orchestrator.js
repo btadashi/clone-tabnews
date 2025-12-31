@@ -11,11 +11,18 @@ async function waitForAllServices() {
 
     async function fetchStatusPage() {
       const response = await fetch("http://localhost:3000/api/v1/status");
-      const responseBody = await response.json();
+
+      // Corrige código que não foi versionado por algum motivo.
+      if (response.status !== 200) {
+        throw Error();
+      }
     }
   }
 }
 
-export default {
+// Atribui o objeto à uma variável antes de dar o `export default` nele.
+const orchestrator = {
   waitForAllServices,
 };
+
+export default orchestrator;
